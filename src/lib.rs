@@ -1,0 +1,18 @@
+#[macro_use]
+extern crate shadow_rs;
+
+shadow!(build);
+
+mod macros;
+mod init;
+
+pub use init::{INIT_FNS, init_once};
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn test_version() {
+        shadow!(build);
+        assert_eq!(build::PKG_VERSION, "0.1.0"); 
+    }
+}
